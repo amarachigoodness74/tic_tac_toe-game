@@ -71,6 +71,10 @@ body {
   width: 34px;
 }
 
+.square.win {
+  border: 3px solid green;
+}
+
 .board-row:after {
   clear: both;
   content: '';
