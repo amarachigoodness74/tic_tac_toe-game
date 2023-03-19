@@ -17,4 +17,4 @@ This is my first published react project and I built this game to lear React by 
 - The app will open on `localhost:3000`
 
 ## Live Demo
-
+https://tic-tac-toe-game-by-amara.vercel.app/
