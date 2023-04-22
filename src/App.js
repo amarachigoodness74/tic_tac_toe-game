@@ -25,9 +25,9 @@ function calculateWinner(squares) {
 
 function isGameEndedWithoutAWinner() {
   const squares = document.getElementsByClassName("square");
-  return [...squares].filter(
-    (square) => square.textContent === ""
-  ).length > 0 ? false : true;
+  return [...squares].filter((square) => square.textContent === "").length > 0
+    ? false
+    : true;
 }
 
 function Square({ value, id, onSquareClick }) {
@@ -54,13 +54,13 @@ function Board({ xIsNext, squares, onPlay, gameEndedWithoutAWinner }) {
   }
 
   const getWinner = calculateWinner(squares);
-   if (getWinner?.winner) {
+  if (getWinner?.winner) {
     getWinner?.cells.forEach((square) => {
       document.getElementById(square).classList.add("win");
     });
-    status = "Winner: " + getWinner?.winner[0];
+    status = <span>Winner: {getWinner?.winner[0]}<button onClick={() => window.location.reload(false)}>start all over</button></span>
   } else if (!getWinner?.winner && gameEndedWithoutAWinner) {
-    status = "No Winner, start all over";
+    status = <span>No Winner, <button onClick={() => window.location.reload(false)}>start all over</button></span>;
   } else {
     const squares = document.getElementsByClassName("square");
     [...squares].forEach((square) => {
@@ -97,9 +97,9 @@ function App() {
 
   useEffect(() => {
     if (isGameEndedWithoutAWinner()) {
-      setGameEndedWithoutAWinner(true)
+      setGameEndedWithoutAWinner(true);
     } else {
-      setGameEndedWithoutAWinner(false)
+      setGameEndedWithoutAWinner(false);
     }
   }, [currentMove, history]);
 
@@ -126,7 +126,7 @@ function App() {
     }
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        <button onClick={() => jumpTo(move)} className="game-moves">{description}</button>
       </li>
     );
   }
@@ -142,22 +142,27 @@ function App() {
   };
 
   return (
-    <div className="game">
-      <div className="game-board">
-        <Board
-          xIsNext={xIsNext}
-          squares={currentSquares}
-          onPlay={handlePlay}
-          gameEndedWithoutAWinner={gameEndedWithoutAWinner}
-        />
+    <>
+      <header className="app-header">
+        <h1>Tic Tac Toe Game Built With React</h1>
+      </header>
+      <div className="game">
+        <div className="game-board">
+          <Board
+            xIsNext={xIsNext}
+            squares={currentSquares}
+            onPlay={handlePlay}
+            gameEndedWithoutAWinner={gameEndedWithoutAWinner}
+          />
+        </div>
+        <div className="game-info">
+          <button onClick={() => setMovesInAsc(!isMovesInAsc)} className="sort-game-moves">
+            Sort moves in {isMovesInAsc ? "DESC" : "ASC"}
+          </button>
+          <ol>{isMovesInAsc ? movesInAsc : movesInDesc()}</ol>
+        </div>
       </div>
-      <div className="game-info">
-        <button onClick={() => setMovesInAsc(!isMovesInAsc)}>
-          Sort moves in {isMovesInAsc ? "DESC" : "ASC"}
-        </button>
-        <ol>{isMovesInAsc ? movesInAsc : movesInDesc()}</ol>
-      </div>
-    </div>
+    </>
   );
 }
 
