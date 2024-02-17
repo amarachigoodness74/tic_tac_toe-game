@@ -11,8 +11,10 @@ This is my first published react project and I built this game to lear React by 
 - Allows time travel to previously played steps
 - Highlights the winning cells
 
-## Steps to build locally
-- Fork/clone this repo
+## Steps to build locally
+- Fork this repo  
+- clone your fork
+- cd into project directory  
 - Run `npm install` or `yarn install`
 - The app will open on `localhost:3000`
 
