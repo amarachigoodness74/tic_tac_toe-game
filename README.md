@@ -1,6 +1,6 @@
 # Tic Tac Toe Game
 
-This is my first published react project and I built this game to lear React by doing and adding more features to learn more.
+This is my first published react project and I built this game to learn React by doing and adding more features to learn more.
 
 ## Features
 
@@ -19,4 +19,4 @@ This is my first published react project and I built this game to lear React by 
 - The app will open on `localhost:3000`
 
 ## Live Demo
-https://tic-tac-toe-game-by-amara.vercel.app/
+https://tic-tac-toe-game-by-amara.vercel.app
